@@ -7,6 +7,11 @@
 
 #include <stdio.h>
 #include <stdarg.h>
+#include <stdlib.h>
+#include <SFML/Window/Export.h>
+#include <SFML/Window/Keyboard.h>
+#include <SFML/Audio.h>
+#include <SFML/Graphics.h>
 
 #ifndef MY_H
     #define MY_H
@@ -58,4 +63,11 @@ int initialize_sprite(void);
 int initialize_text(void);
 int initialize_window(void);
 void cleanup_resources(void);
+int initialize_music(void);
+int initialize_sprite(void);
+int initialize_text(void);
+void game_loop(void);
+void hand_events(void);
+int initialize_window(void);
+int error_hand(void);
 #endif /*my.h*/

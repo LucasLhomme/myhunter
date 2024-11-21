@@ -5,59 +5,31 @@
 ** First Game in csfml !
 */
 
+#include <stdlib.h>
+#include <SFML/Window/Export.h>
+#include <SFML/Window/Keyboard.h>
 #include <SFML/Audio.h>
 #include <SFML/Graphics.h>
-#include <stdlib.h>
 #include "../include/my.h"
+#include "../include/sf.h"
 
-sfRenderWindow* window;
-sfTexture* texture;
-sfSprite* sprite;
-sfFont* font;
-sfText* text;
-sfMusic* music;
-sfEvent event;
-
-
-int initialize_music(void)
+void hand_keypress(sfEvent event)
 {
-    music = sfMusic_createFromFile("./asset/song/FE!N.ogg");
-    if (!music)
-        return EXIT_FAILURE;
-    sfMusic_play(music);
-    return EXIT_SUCCESS;
-}
+    static int i = 1;
 
-int initialize_sprite(void)
-{
-    texture = sfTexture_createFromFile("./asset/sprite/cute_image.jpg", NULL);
-    if (!texture)
-        return EXIT_FAILURE;
-    sprite = sfSprite_create();
-    sfSprite_setTexture(sprite, texture, sfTrue);
-    return EXIT_SUCCESS;
-}
-
-int initialize_text(void)
-{
-    font = sfFont_createFromFile("./asset/text/arial.ttf");
-    if (!font)
-        return EXIT_FAILURE;
-    text = sfText_create();
-    sfText_setString(text, "CACA");
-    sfText_setFont(text, font);
-    sfText_setCharacterSize(text, 250);
-    return EXIT_SUCCESS;
-}
-
-int initialize_window(void)
-{
-    sfVideoMode mode = {800, 600, 32};
-
-    window = sfRenderWindow_create(mode, "Test", sfResize | sfClose, NULL);
-    if (!window)
-        return EXIT_FAILURE;
-    return EXIT_SUCCESS;
+    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyH) {
+        my_printf("printf 1 :%i, ", i);
+        i++;
+        if (i == 2) {
+            my_printf("printf 2 :%i, ", i);
+            sfText_setString(text, "PLACEHOLDER");
+        }
+        if (i > 2) {
+            my_printf("printf 3 :%i\n", i);
+            sfText_setString(text, "test");
+            i = 1;
+        }
+    }
 }
 
 void cleanup_resources(void)

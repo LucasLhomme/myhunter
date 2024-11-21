@@ -9,6 +9,9 @@ pathdir=./src/lib
 
 NAME = my_hunter_lib
 
+ASSET = ./asset/song/loading_music.c \
+	./asset/sprite/loading_sprite.c \
+	./asset/text/loading_text.c
 
 LIB = $(pathdir)/my_compute_power_rec.c\
 	$(pathdir)/my_find_prime_sup.c\
@@ -48,7 +51,7 @@ LIB = $(pathdir)/my_compute_power_rec.c\
 	$(pathdir)/my_printf.c
 
 
-OBJ  	=	 $(SRC:.c=.o)
+OBJ  	=	 $(ASSET:.c=.o)
 
 OBJ_LIB =  $(LIB:.c=.o)
 
