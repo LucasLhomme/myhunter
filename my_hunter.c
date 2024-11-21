@@ -8,7 +8,7 @@
 #include <SFML/Audio.h>
 #include <SFML/Graphics.h>
 #include <stdlib.h>
-#include "./include/my.h"
+#include "../include/my.h"
 
 sfRenderWindow* window;
 sfTexture* texture;
