@@ -9,7 +9,7 @@ pathdir=./src/lib
 
 NAME = my_hunter_lib
 
-SRC = 
+SRC = ./src/my_hunter.c
 
 LIB = $(pathdir)/my_compute_power_rec.c\
 	$(pathdir)/my_find_prime_sup.c\
