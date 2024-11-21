@@ -57,8 +57,8 @@ all: 	$(NAME)
 $(NAME):	$(OBJ) $(OBJ_LIB)
 		ar rcs $(NAME) $(OBJ)  $(OBJ_LIB)
 		gcc -o my_hunter main.c my_hunter.c -Iinclude my_hunter_lib\
-		-lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio 
-		
+		-lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
+
 clean:
 		rm -f $(OBJ) $(OBJ_LIB)
 

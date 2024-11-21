@@ -5,17 +5,15 @@
 ** Main of my hunter
 */
 
-#include <SFML/Audio.h>
 #include <SFML/Graphics.h>
+#include <SFML/Window.h>
+#include <SFML/System.h>
+#include <SFML/Audio.h>
 #include <stdlib.h>
 #include "./include/my.h"
 
-
-extern sfVideoMode mode;
 extern sfRenderWindow* window;
-extern sfTexture* texture;
 extern sfSprite* sprite;
-extern sfFont* font;
 extern sfText* text;
 extern sfMusic* music;
 extern sfEvent event;
@@ -25,32 +23,28 @@ int errorhand(void)
     if (initialize_window() == EXIT_FAILURE ||
         initialize_sprite() == EXIT_FAILURE ||
         initialize_text() == EXIT_FAILURE ||
-        initialize_music() == EXIT_FAILURE)
+        initialize_music() == EXIT_FAILURE){
+        cleanup_resources();
         return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
 }
 
-int windowhand(void)
-{
-}
-
-int main(int windowhand)
-
+int main(void)
 {
     if (errorhand() == EXIT_FAILURE)
         return EXIT_FAILURE;
-    
     while (sfRenderWindow_isOpen(window)) {
+        while (sfRenderWindow_pollEvent(window, &event)
+            && event.type != sfEvtClosed);
+        if (event.type == sfEvtClosed) {
+            sfRenderWindow_close(window);
+        }
         sfRenderWindow_clear(window, sfBlack);
         sfRenderWindow_drawSprite(window, sprite, NULL);
         sfRenderWindow_drawText(window, text, NULL);
         sfRenderWindow_display(window);
-        if (event.type == sfEvtClosed)
-            while (sfRenderWindow_pollEvent(window, &event)) {
-            if (event.type == sfEvtClosed)
-                sfRenderWindow_close(window);
-        }
     }
-
     cleanup_resources();
     return EXIT_SUCCESS;
 }
