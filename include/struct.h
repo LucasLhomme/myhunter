@@ -19,9 +19,10 @@ typedef struct sf_struct {
     sfEvent event;
     sfRenderWindow *window;
     sfSprite *sprite;
-    sfText*text;
+    sfText *text;
     sfFont *font;
     sfTexture *texture;
     sfMusic *music;
-} sf_struct;
+    sfIntRect *area;
+} sf_struct_t;
 #endif
