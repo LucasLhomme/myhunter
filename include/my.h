@@ -12,6 +12,7 @@
 #include <SFML/Window/Keyboard.h>
 #include <SFML/Audio.h>
 #include <SFML/Graphics.h>
+#include "./struct.h"
 
 #ifndef MY_H
     #define MY_H
@@ -56,18 +57,11 @@ void flag_x2(va_list list);
 void flag_x(va_list list);
 void blank(va_list list);
 int flag_detector(const char *format, int i, va_list list);
-int my_getloadavg(double loadavg[], int nelem);
-int fs_open_file(char const *filepath, int x);
-int initialize_music(void);
-int initialize_sprite(void);
-int initialize_text(void);
-int initialize_window(void);
-void cleanup_resources(void);
-int initialize_music(void);
-int initialize_sprite(void);
-int initialize_text(void);
-void game_loop(void);
-void hand_events(void);
-int initialize_window(void);
-int error_hand(void);
+int initialize_music(sf_struct *sf);
+int initialize_sprite(sf_struct *sf);
+int initialize_text(sf_struct *sf);
+int initialize_window(sf_struct *sf);
+void game_loop(sf_struct *sf);
+void exit_events(sf_struct *sf);
+void cleanup_resources(sf_struct *sf);
 #endif /*my.h*/

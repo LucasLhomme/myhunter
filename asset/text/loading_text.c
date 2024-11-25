@@ -5,17 +5,21 @@
 ** load my text
 */
 
+#include <SFML/Graphics.h>
+#include <SFML/Window.h>
+#include <SFML/System.h>
+#include <SFML/Audio.h>
 #include <stdlib.h>
-#include "../../include/sf.h"
+#include "../../include/struct.h"
 
-int initialize_text(void)
+int initialize_text(sf_struct *sf)
 {
-    font = sfFont_createFromFile("./asset/text/arial.ttf");
-    if (!font)
+    sf->font = sfFont_createFromFile("./asset/text/arial.ttf");
+    if (!sf->font)
         return EXIT_FAILURE;
-    text = sfText_create();
-    sfText_setString(text, "");
-    sfText_setFont(text, font);
-    sfText_setCharacterSize(text, 50);
+    sf->text = sfText_create();
+    sfText_setString(sf->text, "");
+    sfText_setFont(sf->text, sf->font);
+    sfText_setCharacterSize(sf->text, 50);
     return EXIT_SUCCESS;
 }

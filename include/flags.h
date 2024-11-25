@@ -5,8 +5,9 @@
 ** struct
 */
 
-#include "my.h"
+#include <stdlib.h>
 #include <stdarg.h>
+#include "my.h"
 
 #ifndef STRUCT_H_
     #define STRUCT_H_

@@ -11,64 +11,58 @@
 #include <SFML/Audio.h>
 #include <stdlib.h>
 #include "./include/my.h"
-#include "../include/sf.h"
+#include "./include/struct.h"
 
-sfRenderWindow* window = NULL;
-sfSprite* sprite = NULL;
-sfTexture* texture = NULL;
-sfText* text = NULL;
-sfFont* font = NULL;
-sfMusic* music = NULL;
-sfEvent event;
 
-int error_hand(void)
+
+int error_hand(sf_struct *sf)
 {
-    if (initialize_window() == EXIT_FAILURE ||
-        initialize_sprite() == EXIT_FAILURE ||
-        initialize_text() == EXIT_FAILURE ||
-        initialize_music() == EXIT_FAILURE){
-        cleanup_resources();
+    if (initialize_window(sf) == EXIT_FAILURE ||
+        initialize_sprite(sf) == EXIT_FAILURE ||
+        initialize_text(sf) == EXIT_FAILURE ||
+        initialize_music(sf) == EXIT_FAILURE){
+        cleanup_resources(sf);
         return EXIT_FAILURE;
     }
     return EXIT_SUCCESS;
 }
 
-int initialize_window(void)
+void exit_events(sf_struct *sf)
+{
+    while (sfRenderWindow_pollEvent(sf->window, &sf->event)) {
+        if (sf->event.type == sfEvtClosed)
+            sfRenderWindow_close(sf->window);
+        hand_keypress(sf);
+    }
+}
+
+int initialize_window(sf_struct *sf)
 {
     sfVideoMode mode = {800, 600, 32};
 
-    window = sfRenderWindow_create(mode, "Test", sfResize | sfClose, NULL);
-    if (!window)
+    sf->window = sfRenderWindow_create(mode, "Test", sfResize | sfClose, NULL);
+    if (!sf->window)
         return EXIT_FAILURE;
     return EXIT_SUCCESS;
 }
 
-void hand_events(void)
+void game_loop(sf_struct *sf)
 {
-    while (sfRenderWindow_pollEvent(window, &event)) {
-        if (event.type == sfEvtClosed)
-            sfRenderWindow_close(window);
-        if (event.type == sfEvtKeyPressed)
-            hand_keypress(event);
-    }
-}
-
-void game_loop(void)
-{
-    while (sfRenderWindow_isOpen(window)) {
-        hand_events();
-        sfRenderWindow_clear(window, sfBlack);
-        sfRenderWindow_drawSprite(window, sprite, NULL);
-        sfRenderWindow_drawText(window, text, NULL);
-        sfRenderWindow_display(window);
+    while (sfRenderWindow_isOpen(sf->window)) {
+        exit_events(sf);
+        sfRenderWindow_clear(sf->window, sfBlack);
+        sfRenderWindow_drawSprite(sf->window, sf->sprite, NULL);
+        sfRenderWindow_drawText(sf->window, sf->text, NULL);
+        sfRenderWindow_display(sf->window);
     }
 }
 
 int main(void)
 {
-    if (error_hand() == EXIT_FAILURE)
+    sf_struct sf = {0};
+
+    if (error_hand(&sf) == EXIT_FAILURE)
         return EXIT_FAILURE;
-    game_loop();
-    cleanup_resources();
-    return EXIT_SUCCESS;
+    game_loop(&sf);
+    exit_events(&sf);
 }
