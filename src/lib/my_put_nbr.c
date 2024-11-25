@@ -20,7 +20,9 @@ int my_put_nbr(int nb)
         }
         return my_put_nbr(- nb);
     }
-    if (beginning != 0)
+    if (beginning != 0) {
         my_put_nbr(beginning);
         my_putchar(end + '0');
+    }
+    return 0;
 }

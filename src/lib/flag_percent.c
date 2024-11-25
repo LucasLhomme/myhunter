@@ -9,7 +9,7 @@
 #include <stdarg.h>
 #include "../../include/my.h"
 
-void flag_percent(va_list list)
+void flag_percent(va_list)
 {
     my_putchar('%');
 }

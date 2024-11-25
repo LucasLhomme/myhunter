@@ -10,46 +10,31 @@
 #include <SFML/Window/Keyboard.h>
 #include <SFML/Audio.h>
 #include <SFML/Graphics.h>
-#include "../include/my.h"
-#include "../include/sf.h"
+#include "./include/my.h"
+#include "./include/struct.h"
 
-void hand_keypress(sfEvent event)
+void hand_keypress(sf_struct *sf)
 {
     static int i = 1;
 
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyH) {
+    if (sf->event.type == sfEvtKeyPressed && sf->event.key.code == sfKeyH) {
         my_printf("printf 1 :%i, ", i);
         i++;
         if (i == 2) {
             my_printf("printf 2 :%i, ", i);
-            sfText_setString(text, "PLACEHOLDER");
+            sfText_setString(sf->text, "PLACEHOLDER");
         }
         if (i > 2) {
             my_printf("printf 3 :%i\n", i);
-            sfText_setString(text, "test");
+            sfText_setString(sf->text, "test");
             i = 1;
         }
     }
 }
 
-void cleanup_resources(void)
+void cleanup_resources(sf_struct *sf)
 {
-    if (text != NULL) {
-        sfText_destroy(text);
-    }
-    if (font != NULL) {
-        sfFont_destroy(font);
-    }
-    if (sprite != NULL) {
-        sfSprite_destroy(sprite);
-    }
-    if (texture != NULL) {
-        sfTexture_destroy(texture);
-    }
-    if (music != NULL) {
-        sfMusic_destroy(music);
-    }
-    if (window != NULL) {
-        sfRenderWindow_destroy(window);
-    }
+    sfText_destroy(sf->text);
+    sfFont_destroy(sf->font);
+    sfRenderWindow_destroy(sf->window);
 }
