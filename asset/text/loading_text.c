@@ -5,12 +5,9 @@
 ** load my text
 */
 
-#include <SFML/Graphics.h>
-#include <SFML/Window.h>
-#include <SFML/System.h>
-#include <SFML/Audio.h>
 #include <stdlib.h>
 #include "../../include/struct.h"
+#include "../../include/my.h"
 
 int initialize_text(sf_struct_t *sf)
 {

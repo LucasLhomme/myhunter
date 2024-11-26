@@ -11,6 +11,8 @@ NAME = my_hunter_lib
 
 ASSET = ./asset/song/loading_music.c \
 	./asset/sprite/loading_sprite.c \
+	./asset/sprite/loading_background.c \
+	./asset/sprite/moving_sprite.c \
 	./asset/text/loading_text.c \
 
 CFLAGS += -g -Wall -Werror -Wextra -W

@@ -5,10 +5,7 @@
 ** load my sprite
 */
 
-#include <SFML/Graphics.h>
-#include <SFML/Window.h>
-#include <SFML/System.h>
-#include <SFML/Audio.h>
+
 #include <stdlib.h>
 #include "../../include/struct.h"
 #include "../../include/my.h"
@@ -41,30 +38,4 @@ void animate_sprite_duck(sf_struct_t *sf, int frame_count)
     if (area.left >= frame_count * 110)
         area.left = 0;
     sfSprite_setTextureRect(sf->duck_sprite, area);
-}
-
-int initialize_sprite_backgrount(sf_struct_t *sf)
-{
-    sf->background_sprite = sfSprite_create();
-    if (!sf->background_sprite)
-        return EXIT_FAILURE;
-    sf->background_texture = sfTexture_createFromFile
-        ("./asset/sprite/background.png", NULL);
-    if (!sf->background_texture) {
-        sfSprite_destroy(sf->background_sprite);
-        return EXIT_FAILURE;
-    }
-    sfSprite_setTexture(sf->background_sprite, sf->background_texture, sfTrue);
-    return EXIT_SUCCESS;
-}
-
-int move_duck(sf_struct_t *sf)
-{
-    sf->speed = (sfVector2f) {100, 100};
-sfVector2f position = sfSprite_getPosition(sf->duck_sprite);
-    position.x += sf->speed.x * sfTime_asSeconds(sfClock_getElapsedTime(sf->clock));
-    sf->clock = sfClock_create();
-    sfSprite_setPosition(sf->duck_sprite, position);
-    sfClock_restart(sf->clock);
-    return EXIT_SUCCESS;
 }
