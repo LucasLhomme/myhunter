@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include "../../include/struct.h"
 
-int initialize_text(sf_struct *sf)
+int initialize_text(sf_struct_t *sf)
 {
     sf->font = sfFont_createFromFile("./asset/text/arial.ttf");
     if (!sf->font)

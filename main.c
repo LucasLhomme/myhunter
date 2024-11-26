@@ -15,7 +15,7 @@
 
 
 
-int error_hand(sf_struct *sf)
+int error_hand(sf_struct_t *sf)
 {
     if (initialize_window(sf) == EXIT_FAILURE ||
         initialize_sprite(sf) == EXIT_FAILURE ||
@@ -27,16 +27,17 @@ int error_hand(sf_struct *sf)
     return EXIT_SUCCESS;
 }
 
-void exit_events(sf_struct *sf)
+void exit_events(sf_struct_t *sf)
 {
     while (sfRenderWindow_pollEvent(sf->window, &sf->event)) {
         if (sf->event.type == sfEvtClosed)
             sfRenderWindow_close(sf->window);
         hand_keypress(sf);
+        mute_music(sf);
     }
 }
 
-int initialize_window(sf_struct *sf)
+int initialize_window(sf_struct_t *sf)
 {
     sfVideoMode mode = {800, 600, 32};
 
@@ -46,7 +47,7 @@ int initialize_window(sf_struct *sf)
     return EXIT_SUCCESS;
 }
 
-void game_loop(sf_struct *sf)
+void game_loop(sf_struct_t *sf)
 {
     while (sfRenderWindow_isOpen(sf->window)) {
         exit_events(sf);
@@ -54,12 +55,13 @@ void game_loop(sf_struct *sf)
         sfRenderWindow_drawSprite(sf->window, sf->sprite, NULL);
         sfRenderWindow_drawText(sf->window, sf->text, NULL);
         sfRenderWindow_display(sf->window);
+        animate_sprite(sf, 3);
     }
 }
 
 int main(void)
 {
-    sf_struct sf = {0};
+    sf_struct_t sf = {0};
 
     if (error_hand(&sf) == EXIT_FAILURE)
         return EXIT_FAILURE;

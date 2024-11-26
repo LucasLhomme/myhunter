@@ -23,6 +23,7 @@ typedef struct sf_struct {
     sfFont *font;
     sfTexture *texture;
     sfMusic *music;
-    sfIntRect *area;
+    sfIntRect area;
+    sfVector2f scale;
 } sf_struct_t;
 #endif

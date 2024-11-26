@@ -65,4 +65,6 @@ void game_loop(sf_struct_t *sf);
 void exit_events(sf_struct_t *sf);
 void cleanup_resources(sf_struct_t *sf);
 void hand_keypress(sf_struct_t *sf);
+void mute_music(sf_struct_t *sf);
+void animate_sprite(sf_struct_t *sf, int frame_count);
 #endif /*my.h*/

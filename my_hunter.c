@@ -13,7 +13,7 @@
 #include "./include/my.h"
 #include "./include/struct.h"
 
-void hand_keypress(sf_struct *sf)
+void hand_keypress(sf_struct_t *sf)
 {
     static int i = 1;
 
@@ -32,7 +32,7 @@ void hand_keypress(sf_struct *sf)
     }
 }
 
-void cleanup_resources(sf_struct *sf)
+void cleanup_resources(sf_struct_t *sf)
 {
     sfText_destroy(sf->text);
     sfFont_destroy(sf->font);
