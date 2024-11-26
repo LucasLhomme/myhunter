@@ -21,7 +21,7 @@ int initialize_sprite(sf_struct_t *sf)
     sf->sprite = sfSprite_create();
     if (!sf->sprite)
         return EXIT_FAILURE;
-    sf->texture = sfTexture_createFromFile("./asset/sprite/cute_image.jpg"
+    sf->texture = sfTexture_createFromFile("./asset/sprite/duck.jpg"
         , NULL);
     if (!sf->texture) {
         sfSprite_destroy(sf->sprite);
