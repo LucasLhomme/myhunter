@@ -13,7 +13,7 @@ int move_duck(sf_struct_t *sf)
 {
     sfVector2f position = sfSprite_getPosition(sf->duck_sprite);
 
-    sf->speed = (sfVector2f) {300, 100};
+    sf->speed = (sfVector2f) {150, 100};
     if (sf->clock != NULL) {
         position.x += sf->speed.x
             * sfTime_asSeconds(sfClock_getElapsedTime(sf->clock));

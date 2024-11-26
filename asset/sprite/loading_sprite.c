@@ -5,11 +5,9 @@
 ** load my sprite
 */
 
-
 #include <stdlib.h>
 #include "../../include/struct.h"
 #include "../../include/my.h"
-
 
 int initialize_sprite_duck(sf_struct_t *sf)
 {

@@ -30,5 +30,7 @@ typedef struct sf_struct {
     sfVector2f speed;
     sfVector2f position;
     sfClock *clock;
+    sfVector2f mouse;
+    sfFloatRect bounds;
 } sf_struct_t;
 #endif
