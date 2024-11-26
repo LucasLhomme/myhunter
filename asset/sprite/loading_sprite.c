@@ -17,11 +17,10 @@
 int initialize_sprite(sf_struct_t *sf)
 {
     sf->area = (sfIntRect) {0, 0, 110, 95};
-    sf->scale = (sfVector2f) {1, 1};
+    sf->scale = (sfVector2f) {0.7, 0.7};
     sf->sprite = sfSprite_create();
-    if (!sf->sprite) {
+    if (!sf->sprite)
         return EXIT_FAILURE;
-    }
     sf->texture = sfTexture_createFromFile("./asset/sprite/cute_image.jpg"
         , NULL);
     if (!sf->texture) {
@@ -38,8 +37,10 @@ void animate_sprite(sf_struct_t *sf, int frame_count)
 {
     sfIntRect area = sfSprite_getTextureRect(sf->sprite);
 
-    area.left = (area.left + 32);
-    if (area.left >= frame_count * 32)
+    area.left = (area.left + 110);
+    if (area.left >= frame_count * 110)
         area.left = 0;
     sfSprite_setTextureRect(sf->sprite, area);
 }
+
+
