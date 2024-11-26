@@ -67,12 +67,19 @@ void game_loop(sf_struct_t *sf)
     }
 }
 
-int main(void)
+int main(int argc, char *argv[])
 {
     sf_struct_t sf = {0};
 
+    if (argc > 1 && argv[1][0] == '-' && argv[1][1] == 'h'
+        && argv[1][2] == '\0') {
+        my_printf("Made by Crabe\nPress 'M' for mute the music\n");
+        my_printf("Music: LostMedia\n");
+        return EXIT_SUCCESS;
+    }
     if (error_hand(&sf) == EXIT_FAILURE)
         return EXIT_FAILURE;
     game_loop(&sf);
     exit_events(&sf);
+    return EXIT_SUCCESS;
 }
