@@ -15,6 +15,7 @@
 
 void cleanup_resources(sf_struct_t *sf)
 {
+    sfClock_destroy(sf->clock);
     sfText_destroy(sf->text);
     sfFont_destroy(sf->font);
     sfRenderWindow_destroy(sf->window);

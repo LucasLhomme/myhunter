@@ -27,5 +27,8 @@ typedef struct sf_struct {
     sfMusic *music;
     sfIntRect area;
     sfVector2f scale;
+    sfVector2f speed;
+    sfVector2f position;
+    sfClock *clock;
 } sf_struct_t;
 #endif

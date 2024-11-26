@@ -69,4 +69,5 @@ void mute_music(sf_struct_t *sf);
 int initialize_sprite_duck(sf_struct_t *sf);
 int initialize_sprite_backgrount(sf_struct_t *sf);
 void animate_sprite_duck(sf_struct_t *sf, int frame_count);
+int move_duck(sf_struct_t *sf);
 #endif /*my.h*/

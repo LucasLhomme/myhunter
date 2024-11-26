@@ -15,8 +15,10 @@
 int initialize_text(sf_struct_t *sf)
 {
     sf->font = sfFont_createFromFile("./asset/text/arial.ttf");
-    if (!sf->font)
+    if (!sf->font) {
+        sfFont_destroy(sf->font);
         return EXIT_FAILURE;
+    }
     sf->text = sfText_create();
     sfText_setString(sf->text, "");
     sfText_setFont(sf->text, sf->font);

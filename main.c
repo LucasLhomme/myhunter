@@ -60,6 +60,7 @@ void game_loop(sf_struct_t *sf)
         sfRenderWindow_drawSprite(sf->window, sf->duck_sprite, NULL);
         sfRenderWindow_drawText(sf->window, sf->text, NULL);
         sfRenderWindow_display(sf->window);
+        move_duck(sf);
         if (frame == 0)
             animate_sprite_duck(sf, 3);
         frame = (frame + 1) % animation_framerate;
