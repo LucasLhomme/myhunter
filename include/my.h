@@ -65,7 +65,6 @@ int initialize_window(sf_struct_t *sf);
 void game_loop(sf_struct_t *sf);
 void exit_events(sf_struct_t *sf);
 void cleanup_resources(sf_struct_t *sf);
-void hand_keypress(sf_struct_t *sf);
 void mute_music(sf_struct_t *sf);
 int initialize_sprite_duck(sf_struct_t *sf);
 int initialize_sprite_backgrount(sf_struct_t *sf);

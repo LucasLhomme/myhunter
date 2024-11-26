@@ -13,25 +13,6 @@
 #include "./include/my.h"
 #include "./include/struct.h"
 
-void hand_keypress(sf_struct_t *sf)
-{
-    static int i = 1;
-
-    if (sf->event.type == sfEvtKeyPressed && sf->event.key.code == sfKeyH) {
-        my_printf("printf 1 :%i, ", i);
-        i++;
-        if (i == 2) {
-            my_printf("printf 2 :%i, ", i);
-            sfText_setString(sf->text, "PLACEHOLDER");
-        }
-        if (i > 2) {
-            my_printf("printf 3 :%i\n", i);
-            sfText_setString(sf->text, "test");
-            i = 1;
-        }
-    }
-}
-
 void cleanup_resources(sf_struct_t *sf)
 {
     sfText_destroy(sf->text);

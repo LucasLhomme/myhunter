@@ -33,7 +33,6 @@ void exit_events(sf_struct_t *sf)
     while (sfRenderWindow_pollEvent(sf->window, &sf->event)) {
         if (sf->event.type == sfEvtClosed)
             sfRenderWindow_close(sf->window);
-        hand_keypress(sf);
         mute_music(sf);
     }
 }
