@@ -16,12 +16,14 @@
     #define SF
 
 typedef struct sf_struct {
-    sfEvent event;
     sfRenderWindow *window;
-    sfSprite *sprite;
+    sfEvent event;
+    sfSprite *background_sprite;
+    sfTexture *background_texture;
+    sfSprite *duck_sprite;
+    sfTexture *duck_texture;
     sfText *text;
     sfFont *font;
-    sfTexture *texture;
     sfMusic *music;
     sfIntRect area;
     sfVector2f scale;

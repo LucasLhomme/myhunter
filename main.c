@@ -18,7 +18,8 @@
 int error_hand(sf_struct_t *sf)
 {
     if (initialize_window(sf) == EXIT_FAILURE ||
-        initialize_sprite(sf) == EXIT_FAILURE ||
+        initialize_sprite_backgrount(sf) == EXIT_FAILURE ||
+        initialize_sprite_duck(sf) == EXIT_FAILURE ||
         initialize_text(sf) == EXIT_FAILURE ||
         initialize_music(sf) == EXIT_FAILURE){
         cleanup_resources(sf);
@@ -39,7 +40,7 @@ void exit_events(sf_struct_t *sf)
 
 int initialize_window(sf_struct_t *sf)
 {
-    sfVideoMode mode = {800, 600, 32};
+    sfVideoMode mode = {1200, 1000, 32};
 
     sf->window = sfRenderWindow_create(mode, "Test", sfResize | sfClose, NULL);
     if (!sf->window)
@@ -51,16 +52,17 @@ void game_loop(sf_struct_t *sf)
 {
     int frame = 0;
     int animation_framerate = 15;
-    
+
     sfRenderWindow_setFramerateLimit(sf->window, 60);
     while (sfRenderWindow_isOpen(sf->window)) {
         exit_events(sf);
         sfRenderWindow_clear(sf->window, sfBlack);
-        sfRenderWindow_drawSprite(sf->window, sf->sprite, NULL);
+        sfRenderWindow_drawSprite(sf->window, sf->background_sprite, NULL);
+        sfRenderWindow_drawSprite(sf->window, sf->duck_sprite, NULL);
         sfRenderWindow_drawText(sf->window, sf->text, NULL);
         sfRenderWindow_display(sf->window);
         if (frame == 0)
-            animate_sprite(sf, 3);
+            animate_sprite_duck(sf, 3);
         frame = (frame + 1) % animation_framerate;
     }
 }

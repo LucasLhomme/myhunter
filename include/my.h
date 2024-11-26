@@ -59,6 +59,7 @@ void blank(va_list list);
 int flag_detector(const char *format, int i, va_list list);
 int initialize_music(sf_struct_t *sf);
 int initialize_sprite(sf_struct_t *sf);
+int background_sprite(sf_struct_t *sf);
 int initialize_text(sf_struct_t *sf);
 int initialize_window(sf_struct_t *sf);
 void game_loop(sf_struct_t *sf);
@@ -66,5 +67,7 @@ void exit_events(sf_struct_t *sf);
 void cleanup_resources(sf_struct_t *sf);
 void hand_keypress(sf_struct_t *sf);
 void mute_music(sf_struct_t *sf);
-void animate_sprite(sf_struct_t *sf, int frame_count);
+int initialize_sprite_duck(sf_struct_t *sf);
+int initialize_sprite_backgrount(sf_struct_t *sf);
+void animate_sprite_duck(sf_struct_t *sf, int frame_count);
 #endif /*my.h*/
