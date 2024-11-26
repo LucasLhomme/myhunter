@@ -18,24 +18,19 @@ int initialize_sprite(sf_struct_t *sf)
 {
     sf->area = (sfIntRect) {0, 0, 110, 95};
     sf->scale = (sfVector2f) {1, 1};
-
     sf->sprite = sfSprite_create();
     if (!sf->sprite) {
-        printf("Erreur : Impossible de créer le sprite.\n");
         return EXIT_FAILURE;
     }
-
-    sf->texture = sfTexture_createFromFile("./asset/sprite/cute_image.jpg", NULL);
+    sf->texture = sfTexture_createFromFile("./asset/sprite/cute_image.jpg"
+        , NULL);
     if (!sf->texture) {
-        printf("Erreur : Impossible de charger la texture.\n");
         sfSprite_destroy(sf->sprite);
         return EXIT_FAILURE;
     }
-
     sfSprite_setTexture(sf->sprite, sf->texture, sfTrue);
     sfSprite_setTextureRect(sf->sprite, sf->area);
     sfSprite_setScale(sf->sprite, sf->scale);
-
     return EXIT_SUCCESS;
 }
 
