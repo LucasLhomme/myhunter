@@ -5,10 +5,7 @@
 ** Main of my hunter
 */
 
-#include <SFML/Graphics.h>
-#include <SFML/Window.h>
-#include <SFML/System.h>
-#include <SFML/Audio.h>
+
 #include <stdlib.h>
 #include "./include/my.h"
 #include "./include/struct.h"
@@ -81,5 +78,6 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     game_loop(&sf);
     exit_events(&sf);
+    cleanup_resources(&sf);
     return EXIT_SUCCESS;
 }
