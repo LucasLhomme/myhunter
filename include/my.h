@@ -71,4 +71,5 @@ int initialize_sprite_backgrount(sf_struct_t *sf);
 void animate_sprite_duck(sf_struct_t *sf, int frame_count);
 int move_duck(sf_struct_t *sf);
 int click_event_sprite(sf_struct_t *sf);
+int check_pos(sf_struct_t *sf);
 #endif /*my.h*/
