@@ -20,9 +20,7 @@ int move_duck(sf_struct_t *sf)
     }
     if (position.x >= 1300) {
         position.x = -200;
-        position.y = rand() % (1000 + 1);
-        sfSprite_setPosition(sf->duck_sprite, sf->position);
-        check_pos(sf);
+        position.y = rand() % (800);
     }
     sf->clock = sfClock_create();
     sfSprite_setPosition(sf->duck_sprite, position);
