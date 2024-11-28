@@ -6,8 +6,8 @@
 */
 
 #include <stdlib.h>
-#include "./include/my.h"
-#include "./include/struct.h"
+#include "my.h"
+#include "struct.h"
 
 void cleanup_resources(sf_struct_t *sf)
 {

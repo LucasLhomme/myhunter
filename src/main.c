@@ -7,8 +7,8 @@
 
 
 #include <stdlib.h>
-#include "./include/my.h"
-#include "./include/struct.h"
+#include "my.h"
+#include "struct.h"
 
 
 

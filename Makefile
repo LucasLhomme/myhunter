@@ -9,6 +9,9 @@ pathdir=./src/lib
 
 NAME = my_hunter
 
+SRC = ./src/main.c\
+	./src/my_hunter.c\
+
 ASSET = ./src/song/loading_music.c \
 	./src/sprite/loading_sprite.c \
 	./src/sprite/loading_background.c \
@@ -23,6 +26,8 @@ LIB =	$(pathdir)/my_getnbr.c\
 	$(pathdir)/my_putchar.c\
 	$(pathdir)/my_putstr.c\
 	$(pathdir)/my_revstr.c\
+	$(pathdir)/my_isneg.c\
+	$(pathdir)/my_strlen.c\
 	$(pathdir)/blanck.c\
 	$(pathdir)/flag_c.c\
 	$(pathdir)/flag_d.c\
@@ -34,22 +39,23 @@ LIB =	$(pathdir)/my_getnbr.c\
 	$(pathdir)/flag_x2.c\
 	$(pathdir)/my_printf.c
 
-OBJ  	=	 $(ASSET:.c=.o)
+OBJ  	=	 $(SRC:.c=.o)
+
+OBJ_ASSET 	= 	$(ASSET:.c=.o)
 
 OBJ_LIB =  $(LIB:.c=.o)
 
 all: 	$(NAME)
 
-$(NAME):	$(OBJ) $(OBJ_LIB)
-		ar rcs $(NAME) $(OBJ)  $(OBJ_LIB)
-		gcc -o my_hunter my_hunter.c main.c -I include my_hunter_lib\
-		-lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
+$(NAME):	$(OBJ) $(OBJ_LIB) $(OBJ_ASSET)
+		gcc -o $(NAME) $(OBJ) $(OBJ_LIB) $(OBJ_ASSET) -lcsfml-graphics\
+		-lcsfml-audio -lcsfml-system -lcsfml-window
 
 clean:
-		rm -f $(OBJ) $(OBJ_LIB)
+		rm -f $(OBJ) $(OBJ_LIB) $(OBJ_ASSET)
 
 fclean:
-		rm -f $(NAME) $(OBJ_LIB) $(OBJ)
+		rm -f $(NAME) $(OBJ) $(OBJ_LIB) $(OBJ_ASSET)
 
 re:
 		$(MAKE) fclean
