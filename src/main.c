@@ -68,10 +68,6 @@ int main(int argc, char *argv[])
 {
     sf_struct_t sf = {0};
 
-    if (isatty(STDIN_FILENO)) {
-        my_printf("Error: Cannot run in a terminal (TTY).\n");
-        return EXIT_FAILURE;
-    }
     if (argc > 1 && argv[1][0] == '-' && argv[1][1] == 'h'
         && argv[1][2] == '\0') {
         my_printf("Made by Crabe\nPress 'M' for mute the music\n");
