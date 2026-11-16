@@ -4,6 +4,7 @@
 [![Library: CSFML](https://img.shields.io/badge/Library-CSFML-228B22.svg)](https://www.sfml-dev.org/)
 [![Module: B-MUL-100](https://img.shields.io/badge/Epitech-B--MUL--100-blue.svg)](https://www.epitech.eu/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Academic Year: 2024-2025](https://img.shields.io/badge/Academic%20Year-2024--2025%20(Tek1)-blueviolet.svg)](#)
 
 > **MyHunter is a 2D arcade video game inspired by Duck Hunt**, built in C using the CSFML multimedia library.
 
